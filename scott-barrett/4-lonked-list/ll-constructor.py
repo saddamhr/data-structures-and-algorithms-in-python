@@ -85,19 +85,27 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
 
-my_lined_list = LinkedList(0)
-my_lined_list.append(2)
-my_lined_list.insert(1, 1)
-# my_lined_list.append(23)
-# my_lined_list.append(7)
-# my_lined_list.print_list()
+my_lined_list = LinkedList(11)
+my_lined_list.append(3)
+my_lined_list.append(23)
+my_lined_list.append(7)
 
-# my_lined_list.set_value(1, 4)
+print(my_lined_list.remove(2), '\n')
+
+
 my_lined_list.print_list()
-# my_lined_list.append(3)
-# my_lined_list.prepend(1)
-# print(my_lined_list.pop())
-# print(my_lined_list.pop())
-# print(my_lined_list.pop())
-# my_lined_list.print_list()
